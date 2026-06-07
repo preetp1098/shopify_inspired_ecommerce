@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style> 
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f3f4f6;
+}
+
+
+.header{
+    background:#000000;
+    padding:18px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 20px rgba(0,0,0,0.2);
+}
+
+.logo{
+    width:120px;
+    height:auto;
+    object-fit:contain;
+    display:block;
+}
+
+
+.middle{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+
+.middle button{
+    background:none;
+    border:none;
+    color:#d1d5db;
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+    transition:0.3s;
+    position:relative;
+}
+
+
+.middle button::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:2px;
+    background:#3b82f6;
+    transition:0.3s;
+}
+
+.middle button:hover{
+    color:white;
+}
+
+.middle button:hover::after{
+    width:100%;
+}
+
+
+.content{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.content button{
+    padding:10px 18px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.content button:first-child{
+    background:#1f2937;
+    color:white;
+}
+
+.content button:last-child{
+    background:#2563eb;
+    color:white;
+}
+
+
+.content button:hover{
+    transform:translateY(-2px);
+    opacity:0.9;
+}
+
+.category-table {
+    width:90%;
+    margin:50px auto;
+    border-collapse:collapse;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+
+.category-table th {
+    background:#111827;
+    color:white;
+    padding:20px;
+    font-size:15px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.category-table td {
+    padding:18px;
+    text-align:center;
+    color:#374151;
+    font-size:14px;
+    border-bottom:1px solid #e5e7eb;
+    vertical-align:middle;
+}
+
+.category-table tr:nth-child(even) {
+    background:#f9fafb;
+}
+
+.category-table tr:hover {
+    background:#eff6ff;
+    transition:0.3s;
+}
+
+.category-table img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover; 
+    object-position: center; 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    transition: transform 0.3s ease;
+}
+
+.category-table img:hover {
+    transform: scale(1.05); 
+}
+
+.fade {
+    animation: fadeEffect 0.8s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        aspect-ratio: 4 / 3;
+        max-height: 350px;
+    }
+    .header {
+        padding: 15px 20px;
+    }
+    .middle {
+        display: none; 
+    }
+    .category-table {
+        font-size: 12px;
+    }
+    .category-table img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+#mainCarousel { 
+    width: 90%; 
+    margin: 30px auto; 
+    border-radius: 20px; 
+    overflow: hidden; 
+}
+.carousel-inner img { 
+    width: 100%; 
+    height: auto; 
+    display: block;
+    object-fit: contain; 
+}
+@media (max-width: 768px) {
+    .carousel-inner img { height: 250px; }
+}
+
+.card .btn:hover{
+    transform:scale(1.05);
+    transition:0.3s;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+.card-img-top{
+    height:250px;
+    object-fit:cover;
+}
+
+.products-title{
+    text-align:center;
+    margin-bottom:40px;
+    font-weight:bold;
+}
+
+.content{ 
+    font-size:14px;
+    font-weight:500;
+    font-family:'Poppins',sans-serif;
+    color:#699d8d;
+}
+
+.privacy-box { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 15px; 
+    border-left: 5px solid #000; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+}
+
+.footer-dark {
+    background: #000; 
+    color: #d1d5db;
+    padding: 60px 0 20px; 
+}
+
+.footer-logo { 
+    width: 120px; 
+    filter: brightness(0) invert(1); 
+    margin-bottom: 20px; 
+}
+
+.footer-link {
+    color: #9ca3af; 
+    text-decoration: none; 
+    transition: 0.3s; 
+    display: block; 
+    margin-bottom: 8px; 
+}
+
+.footer-link:hover { 
+    color: #ffffff; 
+}
+
+.footer-heading { 
+    color: #ffffff; 
+    font-weight: 600; 
+    margin-bottom: 20px; 
+}
+
+.footer-text {
+    color: #ffffff; 
+    opacity: 1 ; 
+}
+.footer-hub {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+#order-section { 
+    background: #f8fafc; 
+    padding: 80px 20px; 
+    margin: 40px auto; 
+    text-align: center; 
+}
+        
+.order-card { 
+    background: #ffffff;
+    padding: 50px; 
+    border-radius: 25px; 
+    display: inline-block;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+</style>
+
+
+</head>
+<body>
+    <div class="header">
+     <img src="data:image/png;base64,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"alt="Logo" class="logo">
+        
+        <div class="middle">
+            <a href="product_button.html">
+            <button>Product</button>
+            </a>
+            <a href="#why-us">
+            <button>Why Shopify?</button>
+            </a>
+            <a href="#about">
+            <button>About</button>
+            </a>
+             <a href="login_page.html">
+               <button>Log in</button>
+            </a>
+        </div>
+
+    </div>
+
+ <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1920&auto=format&fit=crop" class="d-block w-100" alt="Shoes">
+    </div>
+    <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1920&auto=format&fit=crop" class="d-block w-100" alt="Fashion">
+    </div>
+    <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1920&auto=format&fit=crop" class="d-block w-100" alt="Gadgets">
+    </div>
+</div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<section class="container text-center py-5">
+
+    <h1 class="display-4 fw-bold">
+    Build Your Online Store
+    </h1>
+
+    <p class="lead">
+    Create and manage your online business easily.
+    </p>
+
+    <p class="lead">
+    Where Your Business Meets Success.
+    </p>
+ </section>
+
+    <table class="category-table">
+        <tr>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Products</th>
+            <th>Price Range</th>
+            <th>Availability</th>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=500" alt="Clothes">
+            </td>
+            <td>Clothes</td>
+            <td>T-Shirts, Jeans, Hoodies</td>
+            <td>₹500 - ₹3000</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=500" alt="Fashion">
+            </td>
+            <td>Fashion</td>
+            <td>Women Collection, Dresses</td>
+            <td>₹700 - ₹5000</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500" alt="Shoes">
+            </td>
+            <td>Shoes</td>
+            <td>Sneakers, Sports Shoes</td>
+            <td>₹1000 - ₹7000</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=500" alt="Bags">
+            </td>
+            <td>Bags</td>
+            <td>Travel Bags, School Bags</td>
+            <td>₹800 - ₹5000</td>
+            <td>Available</td>
+        </tr>
+
+        <tr>
+            <td>
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500" alt="Watches">
+            </td>
+            <td>Watches</td>
+            <td>Smart Watch, Analog Watch</td>
+            <td>₹2000 - ₹15000</td>
+            <td>Available</td>
+        </tr>
+    </table>
+
+ <section id="products" class="container py-5">
+
+    <h2 class="products-title">
+      Featured Products
+    </h2>
+
+    <div class="row">
+
+      <div class="col-md-4">
+      <div class="card">
+
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500" class="card-img-top">
+      <div class="card-body">
+      
+      <h5>Smart Watch</h5>
+      <p>₹2999</p>
+      <a href="#order-section" class="btn btn-dark">
+        Buy Now
+      </a>
+      </div>
+      </div>
+      </div>
+
+      <div class="col-md-4">
+      <div class="card">
+
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500" class="card-img-top">
+      <div class="card-body">
+      <h5>Sneakers</h5>
+      <p>₹1999</p>
+
+      <a href="#order-section" class="btn btn-dark">
+        Buy Now
+      </a>
+      </div>
+      </div>
+      </div>
+
+      <div class="col-md-4">
+      <div class="card">
+
+      <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg" class="card-img-top">
+      <div class="card-body">
+      <h5>Headphones</h5>
+      <p>₹1499</p>
+
+      <a href="#order-section" class="btn btn-dark">
+        Buy Now
+      </a>
+
+      </div>
+      </div>
+      </div>
+
+    </div>
+
+ </section>
+
+ <section id="about" class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold mb-4">Crafting Excellence in E-commerce</h2>
+                <p class="text-muted fs-5">At Shopify, we don't just build stores; we create digital ecosystems. Our mission is to bridge the gap between visionary entrepreneurs and their target audiences through seamless design and robust functionality.</p>
+                <p class="text-muted fs-5">With years of industry expertise, we ensure that every merchant has the tools they need to scale, innovate, and thrive in an ever-changing competitive landscape.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="card p-4 border-0 shadow-sm bg-dark text-white rounded-4">
+                    <h3 class="mb-3">Our Core Values:</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">✅ Innovation: Always staying ahead of market trends.</li>
+                        <li class="mb-3">✅ Reliability: 99.9% uptime for your business security.</li>
+                        <li class="mb-3">✅ Customer-Centric: Your success is our primary KPI.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="why-us" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Why Choose Us?</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card feature-card p-4 text-center">
+                        <div class="fs-1 mb-3">🚚</div>
+                        <h5>Fast Delivery</h5>
+                        <p class="text-muted small">Global logistics network ensuring your products reach customers on time.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card p-4 text-center">
+                        <div class="fs-1 mb-3">🔒</div>
+                        <h5>Secure Payment</h5>
+                        <p class="text-muted small">Encrypted checkout process to keep your transactions safe and sound.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card p-4 text-center">
+                        <div class="fs-1 mb-3">⭐</div>
+                        <h5>Quality Products</h5>
+                        <p class="text-muted small">Only the best curated products to ensure high customer satisfaction.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card feature-card p-4 text-center">
+                        <div class="fs-1 mb-3">📞</div>
+                        <h5>24/7 Support</h5>
+                        <p class="text-muted small">Our team is always here to resolve any issues instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="order-section">
+        <div class="order-card">
+            <h2 class="fw-bold mb-3">Place Your Order</h2>
+            <p class="text-muted">To purchase, please contact us directly via WhatsApp or Phone.</p>
+            <h3 class="my-4 text-primary fw-bold">📞 +91 9988776655</h3>
+            <p>Send a message with your <strong>Product Name</strong> and <strong>Delivery Address</strong>.</p>
+            <a href="https://wa.me/919988776655" target="_blank" class="btn btn-success btn-lg mt-3">Message on WhatsApp</a>
+        </div>
+    </section>
+
+<section id="privacy-policy" class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="privacy-box">
+                    <h2 class="mb-4">Privacy Policy</h2>
+                    <p class="text-muted">At Shopify, your privacy is our top priority. We are committed to protecting your personal information and ensuring a transparent shopping experience.</p>
+                    <ul class="text-muted">
+                        <li><strong>Data Security:</strong> We use industry-standard encryption to protect your payment details.</li>
+                        <li><strong>Transparency:</strong> We never share your data with third parties without your consent.</li>
+                        <li><strong>Cookies:</strong> We use cookies to enhance your browsing experience and personalize content.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+
+<footer class="footer-dark">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqiJz6bkBmjRiALhvA52GAMziNY_TvZ_MtUQ&s" alt="Logo" class="logo">
+                    <p class="footer-text">The ultimate platform to launch, manage, and grow your online business with ease and precision.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#products" class="footer-link">Products</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                    <a href="#privacy-policy" class="footer-link">Privacy Policy</a>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Contact Details</h5>
+                    <p class="footer-text">🏛️ 0712, Zanskar Bussiness Hub, Vastral, Ahmedabad-38241</p>
+                    <p class="footer-text">📩 support@shopify.com</p>
+                    <p class="footer-text">📞 +91 9988776655</p>
+                </div>
+            </div>
+            <hr class="mt-5 border-secondary">
+            <p class="footer-hub">© 2026 Shopify Inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
